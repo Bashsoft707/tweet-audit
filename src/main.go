@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/Bashsoft707/tweet-audit/src/archive"
 	"github.com/Bashsoft707/tweet-audit/src/config"
 
 	"fmt"
@@ -16,5 +17,24 @@ func main() {
 	}
 
 	fmt.Println("Config Loaded Successfully")
-	fmt.Println("Archive path:", cfg.ArchivePath)
+	data, err := archive.ReadArchive(cfg.ArchivePath)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Archive Read Successful:", cfg.ArchivePath)
+
+	tweets, err := archive.ParseArchive(data)
+
+	if err != nil {
+		panic(err)
+	}
+	
+	// Prints all Tweets
+	if len(tweets) > 0 {
+		for _, tweet := range tweets {
+			fmt.Printf("Tweet ID: %s\nText: %s\nCreated At: %s\n\n", tweet.ID, tweet.FullText, tweet.CreatedAt)
+		}
+	}
+	
 }

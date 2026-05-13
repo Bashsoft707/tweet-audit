@@ -6,7 +6,7 @@ import (
 )
 
 type Config struct {
-	GeminAPIKey string `json:"gemini_api_key"`
+	GeminiAPIKey string `json:"gemini_api_key"`
 	ArchivePath string `json:"archive_path"`
 	OutputPath string `json:"output_path"`
 }
