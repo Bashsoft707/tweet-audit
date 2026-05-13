@@ -1,0 +1,9 @@
+{
+  "gemini_api_key": "YOUR_API_KEY",
+  "archive_path": "./archives",
+  "output_path": "./output/flagged.csv",
+  "criteria": {
+    "forbidden_words": ["crypto", "nft"],
+    "professional_check": true
+  }
+}
