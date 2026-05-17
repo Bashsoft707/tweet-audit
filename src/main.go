@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/Bashsoft707/tweet-audit/src/archive"
 	"github.com/Bashsoft707/tweet-audit/src/config"
+	"github.com/Bashsoft707/tweet-audit/src/analyzer"
 
 	"fmt"
 )
@@ -35,6 +36,17 @@ func main() {
 		for _, tweet := range tweets {
 			fmt.Printf("Tweet ID: %s\nText: %s\nCreated At: %s\n\n", tweet.ID, tweet.FullText, tweet.CreatedAt)
 		}
+	}
+
+	flaggedTweets := analyzer.AnalyseTweets(tweets, "Bashsoft707")
+
+	for _, tweet := range flaggedTweets {
+		fmt.Printf(
+			"Tweet: %s\nReason: %s\nURL: %s\n\n",
+			tweet.Text,
+			tweet.Reason,
+			tweet.URL,
+		)
 	}
 	
 }
