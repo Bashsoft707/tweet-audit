@@ -4,6 +4,7 @@ import (
 	"github.com/Bashsoft707/tweet-audit/src/archive"
 	"github.com/Bashsoft707/tweet-audit/src/config"
 	"github.com/Bashsoft707/tweet-audit/src/analyzer"
+	"github.com/Bashsoft707/tweet-audit/src/report"
 
 	"fmt"
 )
@@ -48,5 +49,12 @@ func main() {
 			tweet.URL,
 		)
 	}
+
+	err = report.WriteCSV("flagged_tweets.csv", flaggedTweets)
+
+	if err != nil {
+		panic(err)
+	}
 	
+	fmt.Printf("CSV report generated successfully")
 }
