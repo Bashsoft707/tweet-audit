@@ -39,7 +39,7 @@ func main() {
 		}
 	}
 
-	flaggedTweets := analyzer.AnalyseTweets(tweets, "Bashsoft707")
+	flaggedTweets := analyzer.AnalyseTweets(tweets, cfg.Username)
 
 	for _, tweet := range flaggedTweets {
 		fmt.Printf(

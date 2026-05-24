@@ -24,7 +24,7 @@ func AnalyseTweets(tweets []models.Tweet, username string) []models.FlaggedTweet
 					TweetID: tweet.ID,
 					Text: tweet.FullText,
 					Reason: "contains forbidden word: " + word,
-					URL: "https//x.com/" + username + "/status/" + tweet.ID,
+					URL: "https://x.com/" + username + "/status/" + tweet.ID,
 					Deleted: false,
 				}
 

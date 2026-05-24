@@ -6,9 +6,10 @@ import (
 )
 
 type Config struct {
-	GeminiAPIKey string `json:"gemini_api_key"`
-	ArchivePath string `json:"archive_path"`
-	OutputPath string `json:"output_path"`
+	Username 		string 		`json:"username"`
+	GeminiAPIKey 	string 		`json:"gemini_api_key"`
+	ArchivePath 	string 		`json:"archive_path"`
+	OutputPath 		string 		`json:"output_path"`
 }
 
 func LoadConfig(path string) (*Config, error) {
