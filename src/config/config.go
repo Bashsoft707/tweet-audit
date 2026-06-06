@@ -6,10 +6,16 @@ import (
 )
 
 type Config struct {
-	Username 		string 		`json:"username"`
-	GeminiAPIKey 	string 		`json:"gemini_api_key"`
-	ArchivePath 	string 		`json:"archive_path"`
-	OutputPath 		string 		`json:"output_path"`
+	Username 				string 		`json:"username"`
+	GeminiAPIKey 			string 		`json:"gemini_api_key"`
+	ArchivePath 			string 		`json:"archive_path"`
+	OutputPath 				string 		`json:"output_path"`
+	Criteria 				Criteria 	`json:"criteria"`
+}
+
+type Criteria struct {
+	ForbiddenWords 			[]string 	`json:"forbidden_words"`
+	ProfessionalCheck		bool		`json:"professional_check"`
 }
 
 func LoadConfig(path string) (*Config, error) {

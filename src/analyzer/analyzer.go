@@ -3,15 +3,13 @@ package analyzer
 import (
 	"strings"
 
+	"github.com/Bashsoft707/tweet-audit/src/config"
 	"github.com/Bashsoft707/tweet-audit/src/models"
 )
 
-func AnalyseTweets(tweets []models.Tweet, username string) []models.FlaggedTweet {
-	forbiddenWords := []string{
-		"crypto",
-		"nft",
-		"hustle",
-	}
+func AnalyseTweets(tweets []models.Tweet, cfg *config.Config ) []models.FlaggedTweet {
+	forbiddenWords := cfg.Criteria.ForbiddenWords
+	username := cfg.Username
 
 	var flagged []models.FlaggedTweet
 

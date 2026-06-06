@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/Bashsoft707/tweet-audit/src/analyzer"
 	"github.com/Bashsoft707/tweet-audit/src/archive"
 	"github.com/Bashsoft707/tweet-audit/src/config"
-	"github.com/Bashsoft707/tweet-audit/src/analyzer"
 	"github.com/Bashsoft707/tweet-audit/src/report"
 
 	"fmt"
@@ -39,7 +39,7 @@ func main() {
 		}
 	}
 
-	flaggedTweets := analyzer.AnalyseTweets(tweets, cfg.Username)
+	flaggedTweets := analyzer.AnalyseTweets(tweets, cfg)
 
 	for _, tweet := range flaggedTweets {
 		fmt.Printf(
@@ -50,7 +50,7 @@ func main() {
 		)
 	}
 
-	err = report.WriteCSV("flagged_tweets.csv", flaggedTweets)
+	err = report.WriteCSV(cfg.OutputPath, flaggedTweets)
 
 	if err != nil {
 		panic(err)
