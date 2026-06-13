@@ -1,13 +1,21 @@
 package report
 
 import (
-	"os"
 	"encoding/csv"
 	"fmt"
+	"os"
+
+	"path/filepath"
+
 	"github.com/Bashsoft707/tweet-audit/src/models"
 )
 
 func WriteCSV(filename string, tweets []models.FlaggedTweet) error {
+	err := os.MkdirAll(filepath.Dir(filename), 0755)
+	if err != nil {
+		return fmt.Errorf("create directory for csv file: %w", err)
+	}
+
 	file, err := os.Create(filename)
 	if err != nil {
 		return fmt.Errorf("create csv file: %w", err)
@@ -23,9 +31,7 @@ func WriteCSV(filename string, tweets []models.FlaggedTweet) error {
 	}
 
 	for _, tweet := range tweets {
-		csvWriter.Write([]string{tweet.URL, "false"})
-
-		if err != nil {
+		if err := csvWriter.Write([]string{tweet.URL, "false"}); err != nil {
 			return fmt.Errorf("write csv row: %w", err)
 		}
 	}

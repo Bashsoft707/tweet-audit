@@ -41,29 +41,17 @@ func main() {
 
 	for _, tweet := range flaggedTweets {
 		flaggedIDs[tweet.TweetID] = true
-		// fmt.Printf(
-		// 	"Tweet: %s\nReason: %s\nURL: %s\n\n",
-		// 	tweet.Text,
-		// 	tweet.Reason,
-		// 	tweet.URL,
-		// )
 	}
 
 
 	baseURL := "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
 
-	count := 0
 	for _, tweet := range tweets {
-		// test first 20 tweets with Gemini
-		if count >= 20 {
-			break
-		}
 		if flaggedIDs[tweet.ID] {
 			continue
 		}
 
 		result, err := gemini.AnalyseTweet(tweet, cfg.GeminiAPIKey, baseURL, cfg)
-		count++
 		time.Sleep(4 * time.Second)
 
 		if err != nil {
