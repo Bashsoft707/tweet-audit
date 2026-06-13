@@ -1,0 +1,10 @@
+{
+  "username": "my-username",
+  "gemini_api_key": "YOUR_API_KEY",
+  "archive_path": "./archives",
+  "output_path": "./flagged_tweets.csv",
+  "criteria": {
+    "forbidden_words": ["crypto", "nft"],
+    "professional_check": true
+  }
+}
